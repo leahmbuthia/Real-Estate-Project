@@ -4,3 +4,4 @@ export const getUser = async (req, res) => {
         message:'hello world Leah'
     });
 };
+ 
