@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  avatar:{
+    type:String,
+    default:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3emn3f2mpTWupUc2I-amL8sdIzuD6lyiCL_aK_oHTWg&s"
+  },
 }, { timestamps: true });
 
 // Middleware to validate user input using Joi schema
