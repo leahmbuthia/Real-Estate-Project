@@ -43,7 +43,7 @@ const Profile = () => {
     const fileName = new Date().getTime() + file.name; // Corrected this line
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
-
+    setFileUploadError(false);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -52,7 +52,7 @@ const Profile = () => {
         setFilePerc(Math.round(progress));
       },
       (error) => {
-        setFileUploadError(true);
+        setFileUploadError(error);
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -119,6 +119,7 @@ const Profile = () => {
       dispatch(deleteUserFailure(data.message));
     }
   };
+  console.log(fileUploadError);
   // firebase storage
   // allow read;
   // allow write: if
