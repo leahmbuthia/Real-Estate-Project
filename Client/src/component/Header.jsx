@@ -2,6 +2,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
 
 
 export default function Header() {
@@ -44,7 +45,7 @@ export default function Header() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button>
-            {/* <FaSearch className='text-slate-600' /> */}
+            <FaSearch className='text-slate-600' />
           
           </button>
         </form>
