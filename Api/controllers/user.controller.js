@@ -2,11 +2,11 @@ import bcryptjs from "bcrypt";
 import { errorHandler } from "../utils/error.js";
 import User from "../models/user.model.js";
 import Listing from "../models/listing.model.js";
-export const getUser = async (req, res) => {
-  res.json({
-    message: "hello world Leah",
-  });
-};
+// export const getUser = async (req, res) => {
+//   res.json({
+//     message: "hello world Leah",
+//   });
+// };
 // export const sigin = async(req,res,next)=>{
 // const {email,password} =req.body;
 // try {
@@ -65,7 +65,18 @@ export const getUserListings = async (req, res, next) => {
       next(error);
     }
   } else {
-    return next(errorHandler(401, 'You can only view your own listings!'));
+    return next(errorHandler(401, "You can only view your own listings!"));
   }
 };
 
+export const getUser = async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+try {
+  
+    if(!user) return next(errorHandler(404,'User not Found!'));
+    const {password: pass, ...rest} = user._doc;
+    res.status(200).json(rest);
+} catch (error) {
+ next(error) 
+}
+};
