@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "pnpm install && install --prefix Client && pnpm run build --prefix Client"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
