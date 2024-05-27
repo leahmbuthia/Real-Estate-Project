@@ -12,9 +12,9 @@ import path from 'path';
 dotenv.config();
 // URL encode the password
 
-
+console.log('MONGO:', process.env.REACT_APP_MONGO);
 // Use the encoded password in the connection URI
-mongoose.connect(process.env.MONGO).then(() =>{
+mongoose.connect(process.env.REACT_APP_MONGO).then(() =>{
     console.log('connected to MongoDB');
 }).catch((err) => {
     console.log(err);
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, '/Client/dist')));
 
 
 app.get('*',(req,res) =>{
- res.sendFile(path.join(__dirname,'Client', 'dist', 'index.html'));   
+ res.sendFile(path.join(__dirname,'Client', 'dist', 'index.html'))   
 })
 
 app.use((err, req,res,next) =>{
